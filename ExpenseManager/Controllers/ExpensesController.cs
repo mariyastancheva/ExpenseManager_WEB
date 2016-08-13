@@ -10,6 +10,7 @@ using ExpenseManager.Models;
 
 namespace ExpenseManager.Controllers
 {
+    [Authorize]
     public class ExpensesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -74,7 +75,9 @@ namespace ExpenseManager.Controllers
             {
                 return HttpNotFound();
             }
+            if(expense.User.ToString() == User.Identity.Name.ToString()) { 
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryId", "Title", expense.CategoryID);
+            }
             return View(expense);
         }
 
