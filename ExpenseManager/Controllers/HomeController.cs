@@ -16,7 +16,7 @@ namespace ExpenseManager.Controllers
         {
 
             var categories = db.Categories.Include(p => p.User).OrderBy(p => p.Title);
-            return View(categories.ToList());
+            return View();
 
         }
 
