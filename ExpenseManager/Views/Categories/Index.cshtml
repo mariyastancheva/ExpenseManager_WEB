@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
 }
 
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -16,19 +17,18 @@
         <th></th>
     </tr>
 
- 
-@foreach (var c in Model.Where(c=> c.User.UserName == User.Identity.Name)) {
+@foreach (var c in Model.Where(c => c.User.UserName == User.Identity.Name)) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => c.Title)
         </td>
         <td>
-           Avtor: @Html.DisplayFor(modelItem => c.User.UserName)
+            Author: @Html.DisplayFor(modelItem => c.User.UserName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=c.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=c.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=c.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=c.CategoryId }) |
+            @Html.ActionLink("Details", "Details", new { id=c.CategoryId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=c.CategoryId })
         </td>
     </tr>
 }

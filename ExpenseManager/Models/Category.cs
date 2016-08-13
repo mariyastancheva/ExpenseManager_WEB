@@ -10,11 +10,13 @@ namespace ExpenseManager.Models
     {
 
         [Key]
-        public int Id { get; set; }
+        public int CategoryId { get; set; }
 
         [Required]
         [StringLength(200)]
         public string Title { get; set; }
         public ApplicationUser User { get; set; }
+
+        public  ICollection<Expense> Expenses { get; set; }
     }
 }

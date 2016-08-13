@@ -17,7 +17,8 @@ namespace ExpenseManager.Controllers
         // GET: Expenses
         public ActionResult Index()
         {
-            return View(db.Expenses.ToList());
+            var expenses = db.Expenses.Include(e => e.Category).Include(p => p.User);
+            return View(expenses.ToList());
         }
 
         // GET: Expenses/Details/5
@@ -38,6 +39,7 @@ namespace ExpenseManager.Controllers
         // GET: Expenses/Create
         public ActionResult Create()
         {
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryId", "Title");
             return View();
         }
 
@@ -46,15 +48,17 @@ namespace ExpenseManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Value")] Expense expense)
+        public ActionResult Create([Bind(Include = "ExpenseID,Value,Date,Comments,CategoryID")] Expense expense)
         {
             if (ModelState.IsValid)
             {
+                expense.User = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
                 db.Expenses.Add(expense);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryId", "Title", expense.CategoryID);
             return View(expense);
         }
 
@@ -70,6 +74,7 @@ namespace ExpenseManager.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryId", "Title", expense.CategoryID);
             return View(expense);
         }
 
@@ -78,7 +83,7 @@ namespace ExpenseManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Value")] Expense expense)
+        public ActionResult Edit([Bind(Include = "ExpenseID,Value,Date,Comments,CategoryID")] Expense expense)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +91,7 @@ namespace ExpenseManager.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryId", "Title", expense.CategoryID);
             return View(expense);
         }
 

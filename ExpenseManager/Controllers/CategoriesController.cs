@@ -10,20 +10,17 @@ using ExpenseManager.Models;
 
 namespace ExpenseManager.Controllers
 {
-    [Authorize]
     public class CategoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Categories
-        
         public ActionResult Index()
         {
             return View(db.Categories.Include(p => p.User).ToList());
         }
 
         // GET: Categories/Details/5
-        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -49,7 +46,7 @@ namespace ExpenseManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title")] Category category)
+        public ActionResult Create([Bind(Include = "CategoryId,Title")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +79,7 @@ namespace ExpenseManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title")] Category category)
+        public ActionResult Edit([Bind(Include = "CategoryId,Title")] Category category)
         {
             if (ModelState.IsValid)
             {

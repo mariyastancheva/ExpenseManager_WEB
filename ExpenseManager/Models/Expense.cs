@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,16 +10,22 @@ namespace ExpenseManager.Models
     public class Expense
     {
         [Key]
-        public int Id { get; set; }
+        public int ExpenseID { get; set; }
 
-        [Required]
+        [DataType(DataType.Currency)]
         public decimal Value { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date")]
+        public DateTime Date { get; set; }
+
+        public string Comments { get; set; }
 
         public ApplicationUser User { get; set; }
 
-        [Required]
-        public Category Category { get; set; }
+        public int CategoryID { get; set; }
 
-        public DateTime Date { get; set; }
+        public  Category Category { get; set; }
     }
 }
