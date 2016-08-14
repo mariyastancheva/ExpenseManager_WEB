@@ -12,6 +12,7 @@ namespace ExpenseManager.Models
         [Key]
         public int ExpenseID { get; set; }
 
+        
         [DataType(DataType.Currency)]
         public decimal Value { get; set; }
 
@@ -25,7 +26,7 @@ namespace ExpenseManager.Models
         public ApplicationUser User { get; set; }
 
         public int CategoryID { get; set; }
-
+        
         public  Category Category { get; set; }
     }
 }

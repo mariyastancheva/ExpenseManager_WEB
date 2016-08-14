@@ -16,9 +16,35 @@ namespace ExpenseManager.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Expenses
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder,string searchString)
         {
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+      
             var expenses = db.Expenses.Include(e => e.Category).Include(p => p.User);
+            
+           
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderByDescending(s => s.Category.Title);
+                    break;
+                case "Date":
+                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderBy(s => s.Date);
+                    break;
+                case "value_desc":
+                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderByDescending(s => s.Value);
+                    break;
+                default:
+                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderBy(s => s.Category.Title);
+                    break;
+            }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).Where(e => e.Category.Title.Contains(searchString));
+            }
+
             return View(expenses.ToList());
         }
 
@@ -131,6 +157,25 @@ namespace ExpenseManager.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult ShowTotal()
+        {
+
+         
+            var totalExpenses = db.Expenses.Where(e=>e.User.UserName == User.Identity.Name)
+                .Sum(e => e.Value);
+           // var dailyExpenses = db.Expenses.Where(e => e.User.UserName == User.Identity.Name
+                                                //   && e.Date.Equals(SelectedDate));
+           // var categoryExpenses = db.Expenses.Where(e => e.User.UserName == User.Identity.Name && 
+                                                      // e.CategoryID == );
+
+
+
+
+
+            ViewBag.totalExpense = totalExpenses;
+
+            return View();
         }
     }
 }

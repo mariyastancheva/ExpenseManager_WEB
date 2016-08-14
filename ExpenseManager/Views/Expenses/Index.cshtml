@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<ExpenseManager.Models.Expense>
-
 @{
     ViewBag.Title = "Index";
 }
@@ -9,16 +8,27 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Category.Title)
+            @Html.ActionLink("Category", "Index", new { sortOrder = ViewBag.NameSortParm })
+            @*Html.DisplayNameFor(model => model.Category.Title)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Value)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+            @*Html.DisplayNameFor(model => model.Date)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Comments)
@@ -46,6 +56,9 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.ExpenseID })
         </td>
     </tr>
+
 }
 
 </table>
+
+   

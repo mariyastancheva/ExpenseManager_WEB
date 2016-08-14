@@ -68,6 +68,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="row">
@@ -84,7 +85,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model.Where(e => e.User.UserName == User.Identity.Name)
-                                        .OrderBy(e => e.Date))
+        .OrderBy(e => e.Date))
                                     {
                                         <tr>
                                             <td>@Html.DisplayFor(modelItem => item.Category.Title)</td>
@@ -103,9 +104,35 @@
                     <div class="col-lg-6">
                         <div id="morris-bar-chart"></div>
                     </div>
-                    <!-- /.col-lg-8 (nested) -->
+
                 </div>
                 <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-donut-chart"></div>
+                                <a href="#" class="btn btn-default btn-block">View Details</a>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-donut-chart2"></div>
+                                <a href="#" class="btn btn-default btn-block">View Details</a>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.panel-body -->
         </div>
