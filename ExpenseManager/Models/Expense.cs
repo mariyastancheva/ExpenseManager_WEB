@@ -14,12 +14,13 @@ namespace ExpenseManager.Models
 
         
         [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]
         public decimal Value { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date")]
-        [RegularExpression(@"([\d]{2})-([\d]{2})-([\d]{4})",ErrorMessage ="Please enter a valid date. The date format should be (dd-MM-yyyy).")]
+        
         public DateTime Date { get; set; }
 
         public string Comments { get; set; }
