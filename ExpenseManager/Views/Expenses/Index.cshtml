@@ -12,7 +12,12 @@
 @using (Html.BeginForm())
 {
     <p>
-        Find by name: @Html.TextBox("searchString")
+        Find by category: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+
+    <p>
+        Find by date: @Html.Editor("searchDate")
         <input type="submit" value="Search" />
     </p>
 }
@@ -60,5 +65,11 @@
 }
 
 </table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#searchDate").datepicker();
+    });
+</script>
 
    

@@ -2,6 +2,8 @@
     ViewBag.Title = "Home";
 }
 @using ExpenseManager.Models;
+@using ExpenseManager.Utils;
+
 @model IEnumerable<ExpenseManager.Models.Expense>
 @section featured {
     <div class="row">
@@ -69,6 +71,18 @@
                 </div>
             </div>
 
+            @{ 
+               
+              
+                var data = ChartsData.GetTotalData(Model).Select(e => new { label=e.Key, value=e.Value });
+
+                var list = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+            }
+            
+            <script type="text/javascript">
+                var data = @(Html.Raw(list));
+            </script>
+
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="row">
@@ -120,6 +134,7 @@
                             <!-- /.panel-body -->
                         </div>
                     </div>
+                    
                     <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">

@@ -14,25 +14,9 @@ namespace ExpenseManager.Controllers
 
         public ActionResult Index()
         {
-            var expenses = db.Expenses.Include(e => e.Category).Include(p => p.User);
+            var expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).Where(e=>e.User.UserName == User.Identity.Name);
             return View(expenses.ToList());
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-
-        }
-
-        
+     
     }
 }

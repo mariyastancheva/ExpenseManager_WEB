@@ -15,6 +15,7 @@ namespace ExpenseManager.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Categories
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Categories.Include(p => p.User).ToList());
@@ -36,6 +37,7 @@ namespace ExpenseManager.Controllers
         }
 
         // GET: Categories/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
