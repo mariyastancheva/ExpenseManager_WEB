@@ -1,6 +1,44 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-3.1.0.intellisense.js"></script>
+    <script src="~/Scripts/jquery-3.1.0.js"></script>
+    <script src="~/Scripts/jquery-3.1.0.min.js"></script>
+    <script src="~/Scripts/jquery-3.1.0.slim.js"></script>
+    <script src="~/Scripts/jquery-3.1.0.slim.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.0.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.0.min.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/_references.js"></script>
+    <script src="~/Scripts/ai.0.22.19-build00125.js"></script>
+    <script src="~/Scripts/ai.0.22.9-build00167.js"></script>
+    <script src="~/Scripts/ai.0.22.19-build00125.min.js"></script>
+    <script src="~/Scripts/ai.0.22.9-build00167.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+   
+    <script src="~/Scripts/knockout-3.4.0.debug.js"></script>
+    <script src="~/Scripts/knockout-3.4.0.js"></script>
+    <script src="~/Scripts/metisMenu.js"></script>
+    <script src="~/Scripts/metisMenu.min.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <script src="~/Scripts/sb-admin-2.js"></script>
+
+
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +53,7 @@
     <link href="~/Content/morris.css" rel="stylesheet">
     <link href="~/Content/timeline.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/a7eabe2741.js"></script>
-    <script src="~/Scripts/jquery-ui.min.js"></script>
+    
     <link href="~/Content/themes/jquery-ui.min.css" rel="stylesheet" />
 
 </head>
@@ -38,16 +76,10 @@
                         <i class="glyphicon glyphicon-off"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
+                        
+                        <li> 
                             <i class="fa fa-sign-out fa-fw"></i>@Html.Partial("_LoginPartial")
-                            @Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { id = "registerLink", @class = "navbar-brand" })
+                          
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -58,17 +90,6 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
                         <li>
                             <a href="~/Home/Index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
@@ -117,7 +138,6 @@
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 
-
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="~/Scripts/bootstrap.min.js"></script>
@@ -131,6 +151,7 @@
     <script src="~/Scripts/sb-admin-2.js"></script>
 
     <script src="../js/morris-data.js"></script>
+   
 </body>
 </html>
 

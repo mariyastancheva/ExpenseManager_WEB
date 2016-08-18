@@ -17,8 +17,9 @@ namespace ExpenseManager.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Expenses
-        public ActionResult Index(string sortOrder,string searchString,string searchDate)
+   
+        public DateTime SearchedDate { get; set; }
+        public ActionResult Index(string sortOrder,string searchString,string searchedDate)
         {
 
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -46,12 +47,12 @@ namespace ExpenseManager.Controllers
             {
                 expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).Where(e => e.Category.Title.Contains(searchString));
             }
-            if (!String.IsNullOrEmpty(searchDate))
+            if (!String.IsNullOrEmpty(searchedDate))
             {
-                var newSearchDate = Utils.Utils.ConvertSearchDate(searchDate);
-                DateTime wantedDate = DateTime.ParseExact(newSearchDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                
-                expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).Where(e => e.Date.Equals(wantedDate));
+                //var newSearchDate = Utils.Utils.ConvertSearchDate(searchedDate);
+                //DateTime wantedDate = DateTime.ParseExact(newSearchDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                DateTime.ParseExact(searchedDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).Where(e => e.Date.Equals(searchedDate));
             }
             return View(expenses.ToList());
         }

@@ -8,6 +8,7 @@ using System.Data.Entity;
 
 namespace ExpenseManager.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

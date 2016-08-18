@@ -30,5 +30,12 @@ namespace ExpenseManager.Models
         public int CategoryID { get; set; }
         
         public  Category Category { get; set; }
+
+        [NotMapped]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date")]
+        public DateTime SearchedDate { get; set; }
+        
     }
 }
