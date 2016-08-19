@@ -19,9 +19,10 @@
     </p>
 
     <p>
-            Find by date: @Html.Editor("searchedDate")
-            <input type="submit" value="Search" />
-           @Html.ValidationMessage("searchedDate", "Please enter a valid date", new { @class = "date" })
+        Find by date:
+        @Html.TextBox("searchedDate", "searchedDate",new { @class = "datefield", type = "date" })
+        <input type="submit" value="Search" />
+
     </p>
 }
 
@@ -50,7 +51,7 @@
             @Html.DisplayFor(modelItem => item.Category.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Value)
+            @Html.DisplayFor(modelItem =>item.Value)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
@@ -64,10 +65,23 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.ExpenseID })
         </td>
     </tr>
-
 }
-
 </table>
+
+   @if (Model.Any())
+   {
+    <p>
+        total: @Html.Raw((((decimal)ViewBag.TotalValue).ToString("C2")))
+    </p>
+   }
+   else
+   {
+    <p>
+        There are no expenses.       
+    </p>
+   }
+
+
 
 <script type="text/javascript">
     $(document).ready(function () {

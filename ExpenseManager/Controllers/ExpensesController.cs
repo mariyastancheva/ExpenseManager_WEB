@@ -21,39 +21,45 @@ namespace ExpenseManager.Controllers
         public DateTime SearchedDate { get; set; }
         public ActionResult Index(string sortOrder,string searchString,string searchedDate)
         {
-
+            ViewBag.TotalValue = 0;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
       
-            var expenses = db.Expenses.Include(e => e.Category).Include(p => p.User);
+            var expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).Where(e => e.User.UserName == User.Identity.Name);
             
            
             switch (sortOrder)
             {
                 case "name_desc":
-                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderByDescending(s => s.Category.Title);
+                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderByDescending(s => s.Category.Title).Where(e => e.User.UserName == User.Identity.Name);
                     break;
                 case "Date":
-                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderBy(s => s.Date);
+                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderBy(s => s.Date).Where(e => e.User.UserName == User.Identity.Name);
                     break;
                 case "value_desc":
-                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderByDescending(s => s.Value);
+                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderByDescending(s => s.Value).Where(e => e.User.UserName == User.Identity.Name);
                     break;
                 default:
-                    expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).OrderBy(s => s.Category.Title);
+                    expenses = db.Expenses.Where(e => e.User.UserName == User.Identity.Name).Include(e => e.Category).Include(p => p.User).OrderBy(s => s.Category.Title);
                     break;
             }
             if (!String.IsNullOrEmpty(searchString))
             {
-                expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).Where(e => e.Category.Title.Contains(searchString));
+                expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).Where(e => e.Category.Title.Contains(searchString)).Where(e => e.User.UserName == User.Identity.Name);
             }
             if (!String.IsNullOrEmpty(searchedDate))
             {
-                //var newSearchDate = Utils.Utils.ConvertSearchDate(searchedDate);
-                //DateTime wantedDate = DateTime.ParseExact(newSearchDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
-                DateTime.ParseExact(searchedDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
-                expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).Where(e => e.Date.Equals(searchedDate));
+                var newSearchDate = Utils.Utils.ConvertSearchDate(searchedDate);
+                DateTime wantedDate = DateTime.ParseExact(newSearchDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                DateTime.ParseExact(searchedDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                expenses = db.Expenses.Include(e => e.Category).Include(p => p.User).Where(e => e.Date.Equals(wantedDate)).Where(e => e.User.UserName == User.Identity.Name);
+               
             }
+            if (expenses.Any())
+            {
+                ViewBag.TotalValue = expenses.Sum(e => e.Value);
+            }
+            
             return View(expenses.ToList());
         }
 

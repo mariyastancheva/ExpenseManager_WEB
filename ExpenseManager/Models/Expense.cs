@@ -12,9 +12,7 @@ namespace ExpenseManager.Models
         [Key]
         public int ExpenseID { get; set; }
 
-        
         [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]
         public decimal Value { get; set; }
 
         [DataType(DataType.Date)]
