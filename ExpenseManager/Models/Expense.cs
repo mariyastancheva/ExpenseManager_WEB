@@ -14,7 +14,6 @@ namespace ExpenseManager.Models
 
         [DataType(DataType.Currency)]
         public decimal Value { get; set; }
-
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date")]

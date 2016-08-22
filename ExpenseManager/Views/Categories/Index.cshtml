@@ -22,12 +22,8 @@
         <td>
             @Html.DisplayFor(modelItem => c.Title)
         </td>
+        
         <td>
-            Author: @Html.DisplayFor(modelItem => c.User.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=c.CategoryId }) |
-            @Html.ActionLink("Details", "Details", new { id=c.CategoryId }) |
             @Html.ActionLink("Delete", "Delete", new { id=c.CategoryId })
         </td>
     </tr>

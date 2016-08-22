@@ -81,23 +81,41 @@ namespace ExpenseManager.Controllers
         // GET: Expenses/Create
         public ActionResult Create()
         {
+            if (db.Categories.Where(e=>e.User.UserName==User.Identity.Name).Count()!=0)
+            {
+                ViewBag.HasCategories = true;
+            }
+            else
+            {
+                ViewBag.HasCategories = false;
+            }
             ViewBag.CategoryID = new SelectList(db.Categories.Where(c=>c.User.UserName==User.Identity.Name), "CategoryId", "Title");
             return View();
         }
 
-        // POST: Expenses/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Expenses/Create    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ExpenseID,Value,Date,Comments,CategoryID")] Expense expense)
         {
+
             if (ModelState.IsValid)
             {
+               
                 expense.User = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
                 db.Expenses.Add(expense);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.SaveChanges();
+                   
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {  
+                    return RedirectToAction("Create","Expenses");
+                }
+                
+               
             }
 
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryId", "Title", expense.CategoryID);
@@ -116,9 +134,9 @@ namespace ExpenseManager.Controllers
             {
                 return HttpNotFound();
             }
-            if(expense.User.ToString() == User.Identity.Name.ToString()) { 
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryId", "Title", expense.CategoryID);
-            }
+            
+            ViewBag.CategoryID = new SelectList(db.Categories.Where(c=>c.User.UserName==User.Identity.Name), "CategoryId", "Title", expense.CategoryID);
+            
             return View(expense);
         }
 
@@ -131,11 +149,20 @@ namespace ExpenseManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(expense).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Entry(expense).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+
+                    return RedirectToAction("Edit","Expenses");
+                }
+               
             }
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryId", "Title", expense.CategoryID);
+            ViewBag.CategoryID = new SelectList(db.Categories.Where(c => c.User.UserName == User.Identity.Name), "CategoryId", "Title", expense.CategoryID);
             return View(expense);
         }
 
@@ -179,15 +206,6 @@ namespace ExpenseManager.Controllers
          
             var totalExpenses = db.Expenses.Where(e=>e.User.UserName == User.Identity.Name)
                 .Sum(e => e.Value);
-           // var dailyExpenses = db.Expenses.Where(e => e.User.UserName == User.Identity.Name
-                                                //   && e.Date.Equals(SelectedDate));
-           // var categoryExpenses = db.Expenses.Where(e => e.User.UserName == User.Identity.Name && 
-                                                      // e.CategoryID == );
-
-
-
-
-
             ViewBag.totalExpense = totalExpenses;
 
             return View();
