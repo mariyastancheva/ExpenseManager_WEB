@@ -223,6 +223,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\metisMenu.css" />
     <Content Include="Content\morris.css" />
+    <Content Include="Content\styles\home-page.css" />
     <Content Include="Content\themes\jquery-ui.min.css" />
     <Content Include="Content\timeline.css" />
     <Content Include="favicon.ico" />
@@ -288,7 +289,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -308,6 +308,11 @@
     <Content Include="Views\Expenses\Edit.cshtml" />
     <Content Include="Views\Expenses\Index.cshtml" />
     <Content Include="Views\Shared\LoginAndRegisterLayout.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Shared\NewLogIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

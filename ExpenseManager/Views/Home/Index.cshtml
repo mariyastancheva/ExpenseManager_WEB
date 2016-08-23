@@ -1,11 +1,18 @@
-﻿@{
+﻿
+
+@{
     ViewBag.Title = "Home";
+
 }
 @using ExpenseManager.Models;
 @using ExpenseManager.Utils;
 
 @model IEnumerable<ExpenseManager.Models.Expense>
 @section featured {
+   <head>
+
+       <link href="~/Content/styles/home-page.css" rel="stylesheet" />
+    </head>
     <div class="row">
     <div class="col-lg-6">
         <div class="panel panel-default">
@@ -26,7 +33,7 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover table-striped">
                             <thead>
-                                <tr>
+                                <tr class="table-headers">
                                     <th>Category</th>
                                     <th>Amount</th>
                                     <th>Date</th>

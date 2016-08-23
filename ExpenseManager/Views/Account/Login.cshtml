@@ -2,17 +2,28 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
-    Layout = "~/Views/Shared/LoginAndRegisterLayout.cshtml";
+    Layout = "~/Views/Shared/NewLogIn.cshtml";
+   
 }
+<head>
+    <link href="~/Content/styles/home-page.css" rel="stylesheet" />
+</head>
+<header>
+    <div class="login-header">
+        <div class="login-logo">Expense Manager v2.0</div>
+    </div>
+</header>
 
-<h2>@ViewBag.Title.</h2>
+<h1 class="welcome-title">Welcome!</h1>
+<h3 class="start-title">Start keeping trace of your expenses!</h3>
+
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
+                <h4 class="login-title-form">Login</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
