@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using ExpenseManager.Models;
 using ExpenseManager.Utils;
 using System.Globalization;
+using PagedList;
+using PagedList.Mvc;
 
 namespace ExpenseManager.Controllers
 {
@@ -19,7 +21,7 @@ namespace ExpenseManager.Controllers
 
    
         public DateTime SearchedDate { get; set; }
-        public ActionResult Index(string sortOrder,string searchString,string searchedDate)
+        public ActionResult Index(string sortOrder,string searchString,string searchedDate,int? page)
         {
             ViewBag.TotalValue = 0;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -60,7 +62,7 @@ namespace ExpenseManager.Controllers
                 ViewBag.TotalValue = expenses.Sum(e => e.Value);
             }
             
-            return View(expenses.ToList());
+            return View(expenses.ToList().ToPagedList(page ?? 1,3));
         }
 
         // GET: Expenses/Details/5
