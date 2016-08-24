@@ -50,11 +50,16 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                        <div class="login-button">
+                            <input type="submit" value="Log in" class="btn btn-default" />
+                        </div>
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
+                <hr class="login-separator"/>
+                <h3 class="get-started-title">Let's get started! </h3>
+                <h4 class="register-title">Register as new user. There are no limitations. Explore all features.</h4>
+                <p class="register-link">
+                    @Html.ActionLink("REGISTER", "Register")
                 </p>
                 @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
