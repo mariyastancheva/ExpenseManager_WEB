@@ -22,31 +22,33 @@
             <i class="fa fa-bar-chart-o fa-fw"></i> Charts           
         </div>
 
-        <!-- table-expenses list -->
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
-                <thead>
-                    <tr class="table-headers">
-                        <th>Category</th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                        <th>Comments</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Where(e => e.User.UserName == User.Identity.Name).OrderBy(e => e.Date))
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Category.Title)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Value)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Comments)</td>
-                        </tr>
-
-                    }
-                </tbody>
-            </table>
-        </div>
+            @if (Model.Any())
+            {
+                <!-- table-expenses list -->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr class="table-headers">
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderByDescending(e => e.Date).Where(e => e.User.UserName == User.Identity.Name))
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Category.Title)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Value)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Comments)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
 
 
         <!-- /.panel-heading -->

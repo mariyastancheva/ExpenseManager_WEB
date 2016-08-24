@@ -9,72 +9,73 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-@using (Html.BeginForm("Index", "Expenses", FormMethod.Get))
-{
-   
-    <p>
-        Find by category: @Html.TextBox("searchString")
-        <input type="submit" value="Search" />
-    </p>
-
-    <p>
-        Find by date:
-        @Html.TextBox("searchedDate", "searchedDate",new { @class = "datefield", type = "date" })
-        <input type="submit" value="Search" />
-
-    </p>
-}
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Category", "Index", new { sortOrder = ViewBag.NameSortParm })
-            @*Html.DisplayNameFor(model => model.Category.Title)*@
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().Value)
-        </th>
-        <th>
-            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })
-            @*Html.DisplayNameFor(model => model.Date)*@
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().Comments)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model.Where(e => e.User.UserName == User.Identity.Name)) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem =>item.Value)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comments)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ExpenseID }) |        
-            @Html.ActionLink("Delete", "Delete", new { id=item.ExpenseID })
-        </td>
-    </tr>
-}
-</table>
-
-@Html.PagedListPager(Model, page=> Url.Action("Index",new { page, searchString=Request.QueryString["searchString"],searchedDate = Request.QueryString["searchedDate"]}))
-
 
    @if (Model.Any())
    {
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    using (Html.BeginForm("Index", "Expenses", FormMethod.Get))
+    {
+
+        <p>
+            Find by category: @Html.TextBox("searchString")
+            <input type="submit" value="Search" />
+        </p>
+
+        <p>
+            Find by date:
+            @Html.TextBox("searchedDate", "searchedDate", new { @class = "datefield", type = "date" })
+            <input type="submit" value="Search" />
+
+        </p>
+    }
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Category", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @*Html.DisplayNameFor(model => model.Category.Title)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Value)
+            </th>
+            <th>
+                @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+                @*Html.DisplayNameFor(model => model.Date)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Comments)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Where(e => e.User.UserName == User.Identity.Name))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ExpenseID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ExpenseID })
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = Request.QueryString["searchString"], searchedDate = Request.QueryString["searchedDate"] }))
+
     <p>
         total: @Html.Raw((((decimal)ViewBag.TotalValue).ToString("C2")))
     </p>
