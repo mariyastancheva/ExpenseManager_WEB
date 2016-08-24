@@ -62,7 +62,7 @@ namespace ExpenseManager.Controllers
                 ViewBag.TotalValue = expenses.Sum(e => e.Value);
             }
             
-            return View(expenses.ToList().ToPagedList(page ?? 1,3));
+            return View(expenses.ToList().ToPagedList(page ?? 1,10));
         }
 
         // GET: Expenses/Details/5
@@ -180,19 +180,21 @@ namespace ExpenseManager.Controllers
             {
                 return HttpNotFound();
             }
-            return View(expense);
-        }
-
-        // POST: Expenses/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Expense expense = db.Expenses.Find(id);
             db.Expenses.Remove(expense);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //// POST: Expenses/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Expense expense = db.Expenses.Find(id);
+        //    db.Expenses.Remove(expense);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
