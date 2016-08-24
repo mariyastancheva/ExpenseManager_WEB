@@ -223,7 +223,9 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\metisMenu.css" />
     <Content Include="Content\morris.css" />
+    <Content Include="Content\styles\dashboard-page.css" />
     <Content Include="Content\styles\home-page.css" />
+    <Content Include="Content\styles\register-page.css" />
     <Content Include="Content\themes\jquery-ui.min.css" />
     <Content Include="Content\timeline.css" />
     <Content Include="favicon.ico" />
