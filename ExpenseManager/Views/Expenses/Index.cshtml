@@ -3,22 +3,18 @@
 @using PagedList.Mvc;
 @model IPagedList<ExpenseManager.Models.Expense>
    
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
-
+<head>
+    <link href="~/Content/styles/expenses-page.css" rel="stylesheet" />
+</head>
    @if (Model.Any())
    {
+    <div class="expenses-wrapper">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-
-    using (Html.BeginForm("Index", "Expenses", FormMethod.Get))
-    {
+        @using (Html.BeginForm("Index", "Expenses", FormMethod.Get))
+        {
 
         <p>
             Find by category: @Html.TextBox("searchString")
@@ -31,54 +27,59 @@
             <input type="submit" value="Search" />
 
         </p>
-    }
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.ActionLink("Category", "Index", new { sortOrder = ViewBag.NameSortParm })
-                @*Html.DisplayNameFor(model => model.Category.Title)*@
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Value)
-            </th>
-            <th>
-                @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })
-                @*Html.DisplayNameFor(model => model.Date)*@
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Comments)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.Where(e => e.User.UserName == User.Identity.Name))
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Value)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comments)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ExpenseID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ExpenseID })
-                </td>
-            </tr>
         }
-    </table>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = Request.QueryString["searchString"], searchedDate = Request.QueryString["searchedDate"] }))
+        <div class="expenses-table">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.ActionLink("Category", "Index", new { sortOrder = ViewBag.NameSortParm })
+                        @*Html.DisplayNameFor(model => model.Category.Title)*@
+                    </th>
+                    <th class="white-cell">
+                        @Html.DisplayNameFor(model => model.First().Value)
+                    </th>
+                    <th>
+                        @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+                        @*Html.DisplayNameFor(model => model.Date)*@
+                    </th>
+                    <th class="white-cell"colspan="2">
+                        @Html.DisplayNameFor(model => model.First().Comments)
+                    </th>
+                    <th></th>
+                </tr>
 
-    <p>
-        total: @Html.Raw((((decimal)ViewBag.TotalValue).ToString("C2")))
-    </p>
+                @foreach (var item in Model.Where(e => e.User.UserName == User.Identity.Name))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.Title)
+                        </td>
+                        <td >
+                            @Html.DisplayFor(modelItem => item.Value)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td class="table-comments" colspan="2">
+                            @Html.DisplayFor(modelItem => item.Comments)
+                        </td>
+                        <td class="expenses-edit-delete-links">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ExpenseID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ExpenseID })
+                        </td>
+                    </tr>
+                }
+            </table>
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = Request.QueryString["searchString"], searchedDate = Request.QueryString["searchedDate"] }))
+       
+            <p>
+                total: @Html.Raw((((decimal)ViewBag.TotalValue).ToString("C2")))
+            </p>
+
+         </div>
+       
+
+    </div>
    }
    else
    {
@@ -86,7 +87,6 @@
         There are no expenses.       
     </p>
    }
-
 
 
 <script type="text/javascript">

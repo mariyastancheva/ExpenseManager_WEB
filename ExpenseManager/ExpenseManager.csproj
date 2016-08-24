@@ -233,6 +233,7 @@
     <Content Include="Content\morris.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\styles\dashboard-page.css" />
+    <Content Include="Content\styles\expenses-page.css" />
     <Content Include="Content\styles\home-page.css" />
     <Content Include="Content\styles\register-page.css" />
     <Content Include="Content\themes\jquery-ui.min.css" />
