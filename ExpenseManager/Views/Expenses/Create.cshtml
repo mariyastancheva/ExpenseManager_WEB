@@ -1,84 +1,87 @@
 ﻿@model ExpenseManager.Models.Expense
 
-@{
-    ViewBag.Title = "Create";
-}
+<head>
+    <link href="~/Content/styles/create-expense-page.css" rel="stylesheet" />
+</head>
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
-{
-
-    @Html.AntiForgeryToken()
-    if (ViewBag.HasCategories!=false)
+    @using (Html.BeginForm())
     {
 
+        @Html.AntiForgeryToken()
+        if (ViewBag.HasCategories != false)
+        {
 
-    <div class="form-horizontal">
-        <h4>Expense</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Value, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" }})
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <h3 class="create-expense-title">Your new expense has:</h3>  
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <h2 class="create-expense-category-title">You may need to <br/>
+                    <text class="create-category"> @Html.ActionLink("Create", "Create", "Categories")</text>
+                    <br/> a new category for your new expense.
+                </h2>             
+               
+                      <hr class="create-devider"/>
+                <div class="create-expenses-table">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
 
-    <div class="form-group">
+                    <div class="form-group">
 
-        @Html.LabelFor(model => model.CategoryID, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
-        </div>
-    </div>
+                        @Html.LabelFor(model => model.CategoryID, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
 
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                    
+                </div>
+        }
+        else if (ViewBag.HasCategories == false)
+        {
+            <p>
+                Your category list is empty and you can not submit any expenses.
+                To be able to lets create some categories
+                @Html.ActionLink("Create category", "Create", "Categories")
+            </p>
+        }
+
     }
-    else if (ViewBag.HasCategories == false)
-    {
-        <p>
-            Your category list is empty and you can not submit any expenses.
-            To be able to lets create some categories
-            @Html.ActionLink("Create category", "Create", "Categories")
-        </p>
+
+
+    
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
     }
-  
-}
-
-
-<div>
-    @Html.ActionLink("Create new category", "Create","Categories")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

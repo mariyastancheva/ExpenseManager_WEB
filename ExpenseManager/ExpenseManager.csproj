@@ -232,7 +232,8 @@
     <Content Include="Content\metisMenu.css" />
     <Content Include="Content\morris.css" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="Content\resourses\searchicon.png" />
+    <Content Include="Content\styles\categories-page.css" />
+    <Content Include="Content\styles\create-expense-page.css" />
     <Content Include="Content\styles\dashboard-page.css" />
     <Content Include="Content\styles\expenses-page.css" />
     <Content Include="Content\styles\home-page.css" />
