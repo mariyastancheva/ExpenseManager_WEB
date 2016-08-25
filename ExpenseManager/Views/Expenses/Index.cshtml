@@ -9,23 +9,24 @@
    @if (Model.Any())
    {
     <div class="expenses-wrapper">
-        <p>
-            @Html.ActionLink("Create New", "Create")
+        <p class="create-new-expense">
+            @Html.ActionLink("Create", "Create")
+            <h3 class="new-expense-title"> new expense!</h3>
         </p>
+        <hr/>
 
         @using (Html.BeginForm("Index", "Expenses", FormMethod.Get))
         {
 
-        <p>
-            Find by category: @Html.TextBox("searchString")
-            <input type="submit" value="Search" />
+        <p class="find-by-category">
+            <text class="find-by-category-text">Find by category:</text> @Html.TextBox("searchString")
+            <input class="search-by-category"  type="submit" value="Search" />
         </p>
 
-        <p>
-            Find by date:
+        <p class="find-by-date">
+            <text class="find-by-date-text">Find by date:</text>
             @Html.TextBox("searchedDate", "searchedDate", new { @class = "datefield", type = "date" })
-            <input type="submit" value="Search" />
-
+            <input class="search-by-date" type="submit" value="Search" />
         </p>
         }
         <div class="expenses-table">
@@ -72,8 +73,8 @@
             </table>
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = Request.QueryString["searchString"], searchedDate = Request.QueryString["searchedDate"] }))
        
-            <p>
-                total: @Html.Raw((((decimal)ViewBag.TotalValue).ToString("C2")))
+            <p class="table-total">
+                Total: @Html.Raw((((decimal)ViewBag.TotalValue).ToString("C2")))
             </p>
 
          </div>
