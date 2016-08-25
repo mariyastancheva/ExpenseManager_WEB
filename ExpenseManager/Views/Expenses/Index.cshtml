@@ -84,8 +84,14 @@
    }
    else
    {
-    <p>
-        There are no expenses.       
+    <p class="no-expenses-area">
+        <text class="no-expenses-text">
+            You do not have any expenses,<br/> so
+        </text>
+    <text class="no-expenses-create-new">
+        @Html.ActionLink("Create", "Create")
+        <text class="no-expenses-create-new-text"> one now!</text>
+    </text>      
     </p>
    }
 
