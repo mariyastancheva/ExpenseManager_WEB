@@ -7,8 +7,8 @@
 
 @model IEnumerable<ExpenseManager.Models.Expense>
 @section featured {
-   <head>
-       <link href="~/Content/styles/dashboard-page.css" rel="stylesheet" />
+    <head>
+        <link href="~/Content/styles/dashboard-page.css" rel="stylesheet" />
     </head>
     <div class="row">
     <div class="col-lg-6">
@@ -19,184 +19,187 @@
     <!-- /.panel -->
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-bar-chart-o fa-fw"></i> Charts           
+            <i class="fa fa-bar-chart-o fa-fw"></i> Charts
         </div>
 
-            @if (Model.Any())
-            {
+        @if (Model.Any())
+        {
                 <!-- table-expenses list -->
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped">
-                        <thead>
-                            <tr class="table-headers">
-                                <th>Category</th>
-                                <th>Amount</th>
-                                <th>Date</th>
-                                <th>Comments</th>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr class="table-headers">
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderByDescending(e => e.Date).Where(e => e.User.UserName == User.Identity.Name))
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Category.Title)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Value)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Comments)</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.OrderByDescending(e => e.Date).Where(e => e.User.UserName == User.Identity.Name))
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Category.Title)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Value)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Comments)</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
 
 
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <div class="row">               
+            <div class="row">
                 <!-- /.col-lg-4 (nested) -->
                 <div class="col-lg-6">
                     <div id="morris-bar-chart"></div>
                 </div>
 
             </div>
-            <!-- scrips for the carts -->
-            <!--expenses from the beggining-->
-            @{
-                var dataTotalEmpty = new[] { new { label = "Your total expenses are", value = 0 } };
+        </div>
+    </div>
+</div>
 
-                var listTotalEmpty = Newtonsoft.Json.JsonConvert.SerializeObject(dataTotalEmpty);
-             }
-            @{
-                var dataTotal = ChartsData.GetTotalData(Model).Select(e => new { label = e.Key, value = e.Value });
+                <!-- scrips for the carts -->
+                <!--expenses from the beggining-->
+                @{
+                    var dataTotalEmpty = new[] { new { label = "Your total expenses are", value = 0 } };
 
-                var listTotal = Newtonsoft.Json.JsonConvert.SerializeObject(dataTotal);
-            }
-            @if (listTotal != "[]")
-            {
-                <script type="text/javascript">
+                    var listTotalEmpty = Newtonsoft.Json.JsonConvert.SerializeObject(dataTotalEmpty);
+                }
+                @{
+                    var dataTotal = ChartsData.GetTotalData(Model).Select(e => new { label = e.Key, value = e.Value });
+
+                    var listTotal = Newtonsoft.Json.JsonConvert.SerializeObject(dataTotal);
+                }
+                @if (listTotal != "[]")
+                {
+                    <script type="text/javascript">
                 var dataTotal = @(Html.Raw(listTotal));
-                </script>
-            }
-            else
-            {
-                <script type="text/javascript">
+                    </script>
+                }
+                else
+                {
+                    <script type="text/javascript">
                 var dataTotal = @(Html.Raw(listTotalEmpty));
-                </script>
-            }
+                    </script>
+                }
 
 
-            <!--expenses from today-->
-            @{
+                <!--expenses from today-->
+                @{
 
-                var dataFromTodayEmpty = new[] { new { label = "Your expenses today are", value = 0 } };
+                    var dataFromTodayEmpty = new[] { new { label = "Your expenses today are", value = 0 } };
 
-                var listFromTodayEmpty = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromTodayEmpty);
-            }
+                    var listFromTodayEmpty = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromTodayEmpty);
+                }
 
-            @{
+                @{
 
-                var dataFromToday = ChartsData.GetTodaysData(Model).Select(e => new { label = e.Key, value = e.Value });
+                    var dataFromToday = ChartsData.GetTodaysData(Model).Select(e => new { label = e.Key, value = e.Value });
 
-                var listFromToday = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromToday);
-            }
-            @if (listFromToday != "[]")
-            {
-                <script type="text/javascript">
+                    var listFromToday = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromToday);
+                }
+                @if (listFromToday != "[]")
+                {
+                    <script type="text/javascript">
                     var dataFromToday = @(Html.Raw(listFromToday));
-                </script>
-            }
-            else
-            {
-                <script type="text/javascript">
+                    </script>
+                }
+                else
+                {
+                    <script type="text/javascript">
                     var dataFromToday = @(Html.Raw(listFromTodayEmpty));
-                </script>
-            }
+                    </script>
+                }
 
 
-            <!--expenses from this month-->
-            @{
+                <!--expenses from this month-->
+                @{
 
-                var dataFromThisMonthEmpty = new[] {new { label = "Your expenses this month are", value =0 }};
+                    var dataFromThisMonthEmpty = new[] { new { label = "Your expenses this month are", value = 0 } };
 
-                var listFromThisMonthEmpty = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromThisMonthEmpty);
-            }
-            @{
+                    var listFromThisMonthEmpty = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromThisMonthEmpty);
+                }
+                @{
 
-                var dataFromThisMonth = ChartsData.GetDataFromThisMonth(Model).Select(e => new { label = e.Key, value = e.Value });
+                    var dataFromThisMonth = ChartsData.GetDataFromThisMonth(Model).Select(e => new { label = e.Key, value = e.Value });
 
-                var listFromThisMonth = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromThisMonth);
-            }
-            @if (listFromThisMonth != "[]")
-            {
-                <script type="text/javascript">
+                    var listFromThisMonth = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromThisMonth);
+                }
+                @if (listFromThisMonth != "[]")
+                {
+                    <script type="text/javascript">
                 var dataFromThisMonth = @(Html.Raw(listFromThisMonth));
-                </script>
-            }
-            else
-            {
-                <script type="text/javascript">
+                    </script>
+                }
+                else
+                {
+                    <script type="text/javascript">
                 var dataFromThisMonth = @(Html.Raw(listFromThisMonthEmpty));
-                </script>
-            }
+                    </script>
+                }
 
 
-            <!--expenses from this year-->
-            @{
-                var dataFromThisYearEmpty =new[] { new { label ="Your expenses this year are", value = 0 } };
+                <!--expenses from this year-->
+                @{
+                    var dataFromThisYearEmpty = new[] { new { label = "Your expenses this year are", value = 0 } };
 
-                var listFromThisYearEmpty = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromThisYearEmpty);
-            }
-            @{
-                var dataFromThisYear = ChartsData.GetDataFromThisYear(Model).Select(e => new { label = e.Key, value = e.Value });
+                    var listFromThisYearEmpty = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromThisYearEmpty);
+                }
+                @{
+                    var dataFromThisYear = ChartsData.GetDataFromThisYear(Model).Select(e => new { label = e.Key, value = e.Value });
 
-                var listFromThisYear = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromThisYear);
-            }
-            @if (listFromThisYear != "[]")
-            {
-                <script type="text/javascript">
+                    var listFromThisYear = Newtonsoft.Json.JsonConvert.SerializeObject(dataFromThisYear);
+                }
+                @if (listFromThisYear != "[]")
+                {
+                    <script type="text/javascript">
                 var dataFromThisYear = @(Html.Raw(listFromThisYear));
-                </script>
-            }
-            else
-            {
-                <script type="text/javascript">
+                    </script>
+                }
+                else
+                {
+                    <script type="text/javascript">
                 var dataFromThisYear = @(Html.Raw(listFromThisYearEmpty));
-                </script>
-            }
-
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Total Expenses
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
-                            <a href="http://localhost:56126/Expenses/Create" class="btn btn-default btn-block">Add New Expense</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Daily Expenses
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-donut-chart2"></div>
-                            <a href="http://localhost:56126/Expenses/Create" class="btn btn-default btn-block">Add New Expense</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                </div>
-
-
+                    </script>
+                }
 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-3">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Total Expenses
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-donut-chart"></div>
+                                <a href="http://localhost:56126/Expenses/Create" class="btn btn-default btn-block">Add New Expense</a>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Daily Expenses
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-donut-chart2"></div>
+                                <a href="http://localhost:56126/Expenses/Create" class="btn btn-default btn-block">Add New Expense</a>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-lg-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <i class="fa fa-bar-chart-o fa-fw"></i> Monthly Expenses
@@ -208,11 +211,11 @@
                             <!-- /.panel-body -->
                         </div>
                     </div>
-                </div>
 
 
-                <div class="row">
-                    <div class="col-lg-6">
+
+
+                    <div class="col-lg-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <i class="fa fa-bar-chart-o fa-fw"></i> Yearly Expenses
@@ -224,12 +227,12 @@
                             <!-- /.panel-body -->
                         </div>
                     </div>
-                </div>
 
+
+                </div>
+                <!-- /.panel-body -->
             </div>
-            <!-- /.panel-body -->
         </div>
-    </div>
-</div>
+    
 
 }
