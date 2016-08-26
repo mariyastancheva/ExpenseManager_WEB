@@ -1,0 +1,107 @@
+﻿.login-header {
+    font-family:Arial;
+    color : white;
+    background-color:#95BBD7;
+    height:60px;
+    padding:15px;
+    word-spacing:3px;
+    font-size:20px;
+}
+.welcome-title {
+    top: 250px;
+    left: 550px;
+    position: absolute;
+    margin:0px;
+    width:400px;
+    color:#666666;
+    font-size:75px;
+    font-family:Georgia;
+}
+.start-title {
+    margin: 0px;
+    width: 570px;
+    color: #ABABAB;
+    font-size: 35px;
+    font-family: Georgia;
+    position: absolute;
+    top: 360px;
+    left: 450px;
+}
+#page-wrapper2 {
+    padding:0px;
+    height:900px;
+    position: inherit;
+    margin: 0 0 0 250px;
+    background-color: #fff;
+    border-left: 1px solid #e7e7e7;
+}
+* {
+    box-sizing: border-box;
+}
+div {
+        display: block;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #F5F5F5;
+}
+.form-horizontal {
+    box-shadow: 10px 10px 5px #888888;
+    background-color:#f4fbff;
+    position: absolute;
+    top: 80px;
+    left:1050px;
+    height: 650px;
+    width: 500px;
+    padding:45px;
+     
+}
+.login-title-form {
+    text-align:center;
+     font-size: 35px;
+    font-family: Georgia;
+}
+.get-started-title {
+    text-align:center;
+    font-family: Georgia;
+    margin-bottom:20px;
+}
+.register-title {
+    font-family: Georgia;
+    text-align:center;
+    
+}
+.register-link {
+     font-family: Georgia;
+     text-align:center;   
+     margin-top:40px;
+     font-size:25px;
+}
+.login-button{
+    text-align:center;  
+    position: inherit;
+    right: 30px;
+    
+}
+.form-horizontal .form-group {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.login-separator {
+    margin-top:30px;
+    margin-bottom:30px;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    width: 150px;
+    background: hsl(65, 100%, 87%);
+    position: absolute;
+    left: 80px;
+    margin-top: 20px;
+}

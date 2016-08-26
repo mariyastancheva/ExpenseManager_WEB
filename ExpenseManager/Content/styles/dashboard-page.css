@@ -1,0 +1,7 @@
+﻿.navbar-default .navbar-brand {
+    color: #23527c;
+}
+.table-responsive {
+    overflow-y: auto;
+    height: 300px;
+}

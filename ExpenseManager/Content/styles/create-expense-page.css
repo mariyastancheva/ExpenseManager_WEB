@@ -1,0 +1,35 @@
+﻿.create-expense-title {
+    font-family: Georgia;
+    font-size: 50px;
+    color: #ABABAB;
+    position: absolute;
+    top: 147px;
+    left: 384px;
+}
+.create-expenses-table {
+   box-shadow: 10px 10px 5px #679DC6;
+    background-color: aliceblue;
+    padding: 35px;
+    display: inline-block;
+    width: 600px;
+    height: 700px;
+    position: relative;
+    top: -51px;
+    left: 720px;
+}
+.create-expense-category-title {
+  text-align: center;
+    font-family: Georgia;
+    font-size: 30px;
+    color: #ABABAB;
+    width: 700px;
+    position: relative;
+    top: 300px;
+}
+.create-category {
+     font-family: Georgia;
+     font-size: 50px;
+}
+.create-devider {
+    
+}
