@@ -2,18 +2,12 @@
     font-family: Georgia;
     font-size: 50px;
     color: #ABABAB;
-    position: absolute;
-    top: 147px;
-    left: 384px;
 }
 .create-category-expense-title {
     text-align: center;
     font-family: Georgia;
     font-size: 30px;
     color: #ABABAB;
-    width: 700px;
-    position: relative;
-    top: 230px;
 }
 .category-you-may-need {
     color:#ABABAB;
@@ -21,25 +15,18 @@
 .create-expense {
     font-family: Georgia;
      font-size: 50px;
-     position: inherit;
-    top: 20px;
 }
 .new-expense-for {
     position: inherit;
     top: 50px;
 }
 .category-create-devider {
-    position: absolute;
-    top: 240px;
-    width: 700px;
 }
 
 .form-control {
 margin-bottom: 65px;
-    
     margin-right: 0px;
     display: block;
-    width: 90%;
     height: 34px;
     padding: 6px 12px;
     font-size: 14px;
@@ -65,11 +52,6 @@ margin-bottom: 65px;
     padding-left: 60px;
     padding-right: 60px;
     display: inline-block;
-    width: 543px;
-    height: 480px;
-    position: relative;
-    top: -33px;
-    left: 818px;
 }
 .col-md-2 {
     width: 16.66666667%;
@@ -81,25 +63,99 @@ margin-bottom: 65px;
 .hr-devider {
      border-color: #b6c3ce;
     width: 100%;
-    position: relative;
     
 }
 .button {
-        height: 85px;
-    width: 290px;
-    color: #677073;
     font-size: 31px;
-    background: #d4ecff;
+    background: ##5cb85c;
     /* border-bottom: blue; */
     /* border-bottom-color: #faffbd; */
     border-radius: 9px;
     font-family: Georgia;
-    margin-top: 50px;
-    margin-left: -15px;
 }
 .text-danger {
    color: #d27877;
-    position: absolute;
-    top: 45%;
-    left: 4%;
+}
+.low {
+    margin-top:7%;
+}
+.form-style-6{
+    font: 95% Arial, Helvetica, sans-serif;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 16px;
+    background: #F7F7F7;
+}
+.form-style-6 h1{
+    background: #43D1AF;
+    padding: 20px 0;
+    font-size: 140%;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+    margin: -16px -16px 16px -16px;
+}
+.form-style-6 input[type="text"],
+.form-style-6 input[type="date"],
+.form-style-6 input[type="datetime"],
+.form-style-6 input[type="email"],
+.form-style-6 input[type="number"],
+.form-style-6 input[type="search"],
+.form-style-6 input[type="time"],
+.form-style-6 input[type="url"],
+.form-style-6 textarea,
+.form-style-6 select 
+{
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 3%;
+    color: #555;
+    font: 95% Arial, Helvetica, sans-serif;
+}
+.form-style-6 input[type="text"]:focus,
+.form-style-6 input[type="date"]:focus,
+.form-style-6 input[type="datetime"]:focus,
+.form-style-6 input[type="email"]:focus,
+.form-style-6 input[type="number"]:focus,
+.form-style-6 input[type="search"]:focus,
+.form-style-6 input[type="time"]:focus,
+.form-style-6 input[type="url"]:focus,
+.form-style-6 textarea:focus,
+.form-style-6 select:focus
+{
+    box-shadow: 0 0 5px #43D1AF;
+    padding: 3%;
+    border: 1px solid #43D1AF;
+}
+
+.form-style-6 input[type="submit"],
+.form-style-6 input[type="button"]{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    background: #43D1AF;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;    
+    color: #fff;
+}
+.form-style-6 input[type="submit"]:hover,
+.form-style-6 input[type="button"]:hover{
+    background: #2EBC99;
+}
+.form-group{
+    padding-top:20px;
 }

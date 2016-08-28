@@ -109,7 +109,7 @@
                             <a href="~/Categories"><i class="fa fa-table fa-fw"></i>Categories</a>
                         </li>
                         <li>
-                            <a href="~/Expenses"><i class="fa fa-table fa-fw"></i>Expenses</a>
+                            <a href="~/Expenses"><i class="fa fa-bar-chart-o fa-fw"></i>Expenses</a>
                         </li>
 
                     </ul>
@@ -125,14 +125,14 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-               
+               @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
             </div>
             <!-- /.col-lg-12 -->
         </div>
-        @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
-            @RenderBody()
-        </section>
+        
     </div>
 
     @Scripts.Render("~/bundles/jquery")

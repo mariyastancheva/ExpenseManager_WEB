@@ -7,10 +7,8 @@
 
 @model IEnumerable<ExpenseManager.Models.Expense>
 @section featured {
-    <head>
-        <link href="~/Content/styles/dashboard-page.css" rel="stylesheet" />
-    </head>
-    <div class="row">
+  
+    <div class="row" style="padding-top:20px;">
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div id="morris-area-chart"></div>
@@ -171,26 +169,26 @@
 
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="panel panel-info">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Total Expenses
+                                <i class="fa fa-bar-chart-o fa-fw "></i> Total Expenses
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart"></div>
-                                <a href="http://localhost:56126/Expenses/Create" class="btn btn-default btn-block">Add New Expense</a>
+                                <a href="http://localhost:56126/Expenses/Create" class="btn btn-success btn-block">Add New Expense</a>
                             </div>
                             <!-- /.panel-body -->
                         </div>
                     </div>
 
                     <div class="col-lg-3">
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <i class="fa fa-bar-chart-o fa-fw"></i> Daily Expenses
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart2"></div>
-                                <a href="http://localhost:56126/Expenses/Create" class="btn btn-default btn-block">Add New Expense</a>
+                                <a href="http://localhost:56126/Expenses/Create" class="btn btn-success btn-block">Add New Expense</a>
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -200,13 +198,13 @@
 
 
                     <div class="col-lg-3">
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <i class="fa fa-bar-chart-o fa-fw"></i> Monthly Expenses
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart3"></div>
-                                <a href="http://localhost:56126/Expenses/Create" class="btn btn-default btn-block">Add New Expense</a>
+                                <a href="http://localhost:56126/Expenses/Create" class="btn btn-success btn-block">Add New Expense</a>
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -216,13 +214,13 @@
 
 
                     <div class="col-lg-3">
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <i class="fa fa-bar-chart-o fa-fw"></i> Yearly Expenses
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart4"></div>
-                                <a href="http://localhost:56126/Expenses/Create" class="btn btn-default btn-block">Add New Expense</a>
+                                <a href="http://localhost:56126/Expenses/Create" class="btn btn-success btn-block">Add New Expense</a>
                             </div>
                             <!-- /.panel-body -->
                         </div>

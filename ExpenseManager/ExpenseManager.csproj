@@ -233,6 +233,7 @@
     <Content Include="Content\morris.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\styles\categories-page.css" />
+    <Content Include="Content\styles\create-category-page.css" />
     <Content Include="Content\styles\create-expense-page.css" />
     <Content Include="Content\styles\dashboard-page.css" />
     <Content Include="Content\styles\expenses-page.css" />
@@ -319,7 +320,6 @@
     <Content Include="Views\Expenses\Create.cshtml" />
     <Content Include="Views\Expenses\Edit.cshtml" />
     <Content Include="Views\Expenses\Index.cshtml" />
-    <Content Include="Views\Shared\LoginAndRegisterLayout.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />

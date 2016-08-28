@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<ExpenseManager.Models.Category>
 
 <head>
-    <link href="~/Content/styles/categories-page.css" rel="stylesheet" />
+    <link href="~/Content/styles/categories-page.css" type="text/css" rel="stylesheet" />
 </head>
 @if (Model.Where(c => c.User.UserName == User.Identity.Name).Any())
 {
     <div class="categories-wrapper">
-
-        <p class="create-new-category">
-            @Html.ActionLink("Create", "Create")
-            <h3 class="new-category-title"> new category!</h3>
-        </p>
+        <div class="row">
+            <div class="col-lg-6">
+                <p class="new-category-title"><h3 class="new-category-title">@Html.ActionLink("Create", "Create")  new category!</h3> </p> 
+        </div>
+    </div>
         <div class="categories-table">
             <table class="table">
                 <tr>
@@ -28,21 +28,21 @@
                         </td>
 
                         <td>
-                            @Html.ActionLink("Delete", "Delete", new { id = c.CategoryId })
+                            <button class="btn btn-danger delete"> @Html.ActionLink("Delete", "Delete", new { id = c.CategoryId })</button>
                         </td>
                     </tr>
                 }
 
             </table>
-            </div>
         </div>
-        }
+        </div>
+}
 
 
-        else
-        {
-        <p>There are no categories.</p>
+else
+{
+    <p>There are no categories.</p>
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
-        }
+}

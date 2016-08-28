@@ -3,77 +3,78 @@
 @{
     ViewBag.Title = "Log in";
     Layout = "~/Views/Shared/NewLogIn.cshtml";
-   
+
 }
 <head>
-    <link href="~/Content/styles/home-page.css" rel="stylesheet" />
+
 </head>
 <header>
-    <div class="login-header">
-        <div class="login-logo">Expense Manager v2.0</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="login-header">
+                <div class="login-logo">Expense Manager v2.0</div>
+            </div>
+        </div>
     </div>
 </header>
-
-<h1 class="welcome-title">Welcome!</h1>
-<h3 class="start-title">Start keeping trace of your expenses!</h3>
-
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-lg-7">
+        <div class="center-block">
+            <h1 class="welcome-title text-center">Welcome!</h1>
+            <h3 class="start-title text-center">Start keeping trace of your expenses!</h3>
+        </div>
+    </div>
+    
+    <div class="col-lg-5">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
                 <h4 class="login-title-form">Login</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group text-info">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-11">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="login-button">
-                            <input type="submit" value="Log in" class="btn btn-default" />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-11">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                </div>
-                <hr class="login-separator"/>
-                <h3 class="get-started-title">Let's get started! </h3>
-                <h4 class="register-title">Register as new user. There are no limitations. Explore all features.</h4>
-                <p class="register-link">
-                    @Html.ActionLink("REGISTER", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="login-button">
+                                <input type="submit" value="Log in" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="login-separator" />
+                    <h3 class="get-started-title">Let's get started! </h3>
+                    <h4 class="register-title">Register as new user. There are no limitations. Explore all features.</h4>
+                    <p class="register-link">
+                        @Html.ActionLink("REGISTER", "Register")
+                    </p>
             }
         </section>
     </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
 </div>
+
+       
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

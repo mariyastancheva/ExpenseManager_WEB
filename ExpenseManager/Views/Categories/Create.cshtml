@@ -1,38 +1,52 @@
 ﻿@model ExpenseManager.Models.Category
 <head>
-    <link href="~/Content/styles/create-category-page.css" rel="stylesheet" />
+    <link href="~/Content/styles/create-category-page.css" type="text/css" rel="stylesheet" />
 </head>
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-    <h3 class="create-category-title">Your new categoryhas:</h3>
-
-    <h2 class="create-category-expense-title">
-        <text class="category-you-may-need">You may want to </text><br />
-        <text class="create-expense"> @Html.ActionLink("Create", "Create", "Expenses")</text>
-        <br /> <text class="new-expense-for">new expense.</text>
-    </h2>
-
-                <hr class="category-create-devider" />
-
-    <div class="create-form">
-      
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+    <div class="row low">
+        <div class="col-lg-6">
+            <h3 class="create-category-title">Your new category has:</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <hr class="category-create-devider" />
+                    <h2 class="create-category-expense-title text-center">
+                        <text class="category-you-may-need">You may want to </text><br />
+                        <text class="create-expense"> @Html.ActionLink("Create", "Create", "Expenses")</text>
+                        <br /> <text class="new-expense-for">new expense.</text>
+                    </h2>
+                </div>
             </div>
         </div>
-        <hr class="hr-devider"/>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="button" />
+
+        <div class="col-lg-6">
+            <div class="form-style-6">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <hr class="hr-devider" />
+                <div class="form-group">
+
+                    <input type="submit" value="Create" class="btn btn-success center-block button" />
+
+                </div>
             </div>
         </div>
+
+
     </div>
+
+
+
+
+
 }
 
 
