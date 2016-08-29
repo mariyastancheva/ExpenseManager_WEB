@@ -24,14 +24,14 @@
             <h3 class="start-title text-center">Start keeping trace of your expenses!</h3>
         </div>
     </div>
-    
+
     <div class="col-lg-5">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
                 <h4 class="login-title-form">Login</h4>
-                    <hr />
+                <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group text-info">
                         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
@@ -73,7 +73,7 @@
     </div>
 </div>
 
-       
+
 
 
 @section Scripts {

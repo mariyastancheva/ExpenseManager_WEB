@@ -58,7 +58,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-3" })
                         <div class="col-md-9">
-                            @Html.TextAreaFor(model => model.Comments,  new { @class = "form-control text", @id = "comment",@rows = 4 } )
+                            @Html.TextAreaFor(model => model.Comments, new { @class = "form-control text", @id = "comment", @rows = 4 })
                             @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -74,14 +74,14 @@
     {
         <p class="no-category-area">
             <text class="no-category-text">
-                Your category list is empty <br/> you can not submit any expenses.<br /> To be able to lets <br/>
+                Your category list is empty <br /> you can not submit any expenses.<br /> To be able to lets <br />
             </text>
             <text class="no-category-create-new">
                 @Html.ActionLink("Create", "Create", "Categories")
                 <text class="no-category-create-new-text"> some categories!</text>
             </text>
         </p>
-       
+
     }
 
 }

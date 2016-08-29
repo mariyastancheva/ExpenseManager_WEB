@@ -1,5 +1,4 @@
 ﻿
-
 @model ExpenseManager.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
@@ -10,26 +9,27 @@
     <link href="~/Content/styles/register-page.css" rel="stylesheet" />
 </head>
 
-    <header>
-        <div class="login-header">
-            <div class="login-logo">Expense Manager v2.0</div>
-        </div>
-    </header>
+<header>
+    <div class="login-header">
+        <div class="login-logo">Expense Manager v2.0</div>
+    </div>
+</header>
+
 <div class="row">
     <div class="col-lg-7">
-        <div class="center-block">
-            <h1 class="welcome-title text-center ">Welcome!</h1>
+        <div class="center-block ">
+            <h1 class="welcome-title text-center">Welcome!</h1>
             <h3 class="start-title text-center">Start keeping trace of your expenses!</h3>
-            </div>
         </div>
+    </div>
 
-            <div class="col-lg-5">
-                <section id="loginForm">
-                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    <div class="col-lg-5">
+        <section id="loginForm">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                        @Html.AntiForgeryToken()
-                        <h4 class="login-title-form">Create new account.</h4>
-                        <hr />
+                @Html.AntiForgeryToken()
+                <h4 class="login-title-form">Create new account.</h4>
+                <hr />
                         @Html.ValidationSummary("", new { @class = "text-danger" })
                         <div class="form-group">
                             @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
@@ -60,12 +60,14 @@
                             </div>
                         </div>
 
-                    }
-                </section>
-            </div>
+            }
+        </section>
+    </div>
 
-        </div>
+</div>
 
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
