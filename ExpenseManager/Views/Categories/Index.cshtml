@@ -1,17 +1,18 @@
 ﻿@model IEnumerable<ExpenseManager.Models.Category>
 
 <head>
-    <link href="~/Content/styles/categories-page.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/styles/categories-page.css" rel="stylesheet" />
 </head>
 @if (Model.Where(c => c.User.UserName == User.Identity.Name).Any())
 {
     <div class="categories-wrapper">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-lg-push-1">
                 <p class="new-category-title"><h3 class="new-category-title">@Html.ActionLink("Create", "Create")  new category!</h3> </p> 
+                <hr/>
         </div>
     </div>
-        <div class="categories-table">
+        <div class="categories-table col-lg-6 col-lg-push-1">
             <table class="table">
                 <tr>
                     <th>
@@ -27,7 +28,7 @@
                             @Html.DisplayFor(modelItem => c.Title)
                         </td>
 
-                        <td>
+                        <td class="delete-button">
                             <button class="btn btn-danger delete"> @Html.ActionLink("Delete", "Delete", new { id = c.CategoryId })</button>
                         </td>
                     </tr>
@@ -41,8 +42,14 @@
 
 else
 {
-    <p>There are no categories.</p>
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
+    <p class="no-category-area">
+        <text class="no-category-text">
+            You do not have any categories,<br /> so
+        </text>
+        <text class="no-category-create-new">
+            @Html.ActionLink("Create", "Create")
+            <text class="no-category-create-new-text">new one now!</text>
+        </text>
+    </p>
+  
 }

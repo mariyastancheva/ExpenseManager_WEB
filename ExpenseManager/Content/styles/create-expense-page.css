@@ -24,7 +24,6 @@
 }
 
 
-
 .form-control {
 
     display: block;
@@ -80,7 +79,7 @@ hr {
     margin-left: 10px;
 }
 .create-form {
-    
+
     box-shadow: 10px 10px 5px #679DC6;
     background-color: aliceblue;
     padding-top:40px;
@@ -88,9 +87,10 @@ hr {
 }
 .form-style-6{
     font: 95% Arial, Helvetica, sans-serif;
-    max-width: 400px;
-    margin: 10px auto;
-    padding: 16px;
+    max-width: 500px;
+    max-height: 700px;
+    margin: 20px auto;
+    padding: 50px;
     background: #F7F7F7;
 }
 .form-style-6 h1{
@@ -153,6 +153,7 @@ hr {
     -moz-box-sizing: border-box;
     width: 100%;
     padding: 3%;
+    margin-top:17%;
     background: #43D1AF;
     border-bottom: 2px solid #30C29E;
     border-top-style: none;
@@ -166,9 +167,33 @@ hr {
 }
 .form-group
 {
-    padding-bottom:50px;
+    padding-bottom:60px;
 }
 .create-controls
 {
     padding-top:20px;
+}
+
+
+.no-category-text {
+     font-family:Georgia;
+    font-size:40px;
+    color:#ABABAB;   
+    text-align:center;
+}
+.no-category-create-new {
+     font-family:Georgia;
+    font-size:80px;
+}
+.no-category-create-new-text {
+ font-family:Georgia;
+    font-size:40px;
+    color:#ABABAB;   
+}
+.no-category-area {
+    font-size:50px;
+    word-spacing:5px;
+    position: relative;
+    top: 30px;
+    left: 20px;
 }

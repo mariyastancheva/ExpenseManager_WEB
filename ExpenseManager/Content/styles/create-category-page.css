@@ -8,6 +8,7 @@
     font-family: Georgia;
     font-size: 30px;
     color: #ABABAB;
+    margin-top:7%;
 }
 .category-you-may-need {
     color:#ABABAB;
@@ -82,8 +83,9 @@ margin-bottom: 65px;
 .form-style-6{
     font: 95% Arial, Helvetica, sans-serif;
     max-width: 400px;
+    max-height:700px;
     margin: 10px auto;
-    padding: 16px;
+    padding: 40px;
     background: #F7F7F7;
 }
 .form-style-6 h1{
@@ -157,5 +159,6 @@ margin-bottom: 65px;
     background: #2EBC99;
 }
 .form-group{
-    padding-top:20px;
+    padding-top:40px;
+    padding-bottom:40px;
 }

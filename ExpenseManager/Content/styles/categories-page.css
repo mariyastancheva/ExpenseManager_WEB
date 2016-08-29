@@ -19,10 +19,41 @@
     margin-top: 40px;
     box-shadow: 10px 10px 5px #679DC6;
     background-color: aliceblue;
-    padding: 35px;
+    padding: 65px;
 
 }
 .delete a {
     color:white;
     font-weight:bolder;
 }
+.delete-button {
+max-width:15px;
+}
+
+.no-category-text {
+     font-family:Georgia;
+    font-size:40px;
+    color:#ABABAB;   
+    text-align:center;
+}
+.no-category-create-new {
+     font-family:Georgia;
+    font-size:80px;
+}
+.no-category-create-new-text {
+ font-family:Georgia;
+    font-size:40px;
+    color:#ABABAB;   
+}
+.no-category-area {
+    font-size:50px;
+    word-spacing:5px;
+    position: relative;
+    top: 30px;
+    left: 20px;
+}
+.button a{
+  color:white;
+  font-weight:bolder;
+}
+
