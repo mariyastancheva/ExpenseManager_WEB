@@ -2,36 +2,60 @@
     font-family:Arial;
     color : white;
     background-color:#95BBD7;
+    height:60px;
     padding:15px;
     word-spacing:3px;
     font-size:20px;
-    margin-top:0px;
-    margin-bottom:30px;
 }
-
 .welcome-title {
-    margin-left: 10px;
-    color: #666666;
-    font-size: 75px;
-    font-family: Georgia;
-    margin-top: 80px;
+    top: 250px;
+    left: 550px;
+    position: absolute;
+    margin:0px;
+    width:400px;
+    color:#666666;
+    font-size:75px;
+    font-family:Georgia;
 }
 .start-title {
-    margin-left: 10px;
-    margin-top:50px;
+    margin: 0px;
+    width: 570px;
     color: #ABABAB;
     font-size: 35px;
     font-family: Georgia;
+    position: absolute;
+    top: 360px;
+    left: 450px;
 }
 #page-wrapper2 {
+    padding:0px;
+    height:900px;
+    position: inherit;
+    margin: 0 0 0 250px;
     background-color: #fff;
     border-left: 1px solid #e7e7e7;
 }
-
-
+* {
+    box-sizing: border-box;
+}
+div {
+        display: block;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #F5F5F5;
+}
 .form-horizontal {
     box-shadow: 10px 10px 5px #888888;
-    background-color:#f4fbff;   
+    background-color:#f4fbff;
+    position: absolute;
+    top: 80px;
+    left:1050px;
+    height: 650px;
+    width: 500px;
     padding:45px;
      
 }
@@ -48,6 +72,7 @@
 .register-title {
     font-family: Georgia;
     text-align:center;
+    
 }
 .register-link {
      font-family: Georgia;
@@ -74,22 +99,10 @@
 button, html input[type=button], input[type=reset], input[type=submit] {
     -webkit-appearance: button;
     cursor: pointer;
+    width: 150px;
     background: hsl(65, 100%, 87%);
+    position: absolute;
+    left: 80px;
+    margin-top: 20px;
 }
 
-label {
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 5px;
-    font-weight: 700;
-    color: #3D9BDA;
-}
-
-.form-horizontal .control-label {
-    padding-top: 7px;
-    margin-bottom: 0;
-    text-align: left;
-}
-.welcome-title text-center {
-    margin-top:50px;
-}

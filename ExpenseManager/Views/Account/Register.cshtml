@@ -9,59 +9,63 @@
 <head>
     <link href="~/Content/styles/register-page.css" rel="stylesheet" />
 </head>
-<header>
-    <div class="login-header">
-        <div class="login-logo">Expense Manager v2.0</div>
-    </div>
-</header>
 
-<h1 class="welcome-title">Welcome!</h1>
-<h3 class="start-title">Start keeping trace of your expenses!</h3>
-
+    <header>
+        <div class="login-header">
+            <div class="login-logo">Expense Manager v2.0</div>
+        </div>
+    </header>
 <div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-           @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    <div class="col-lg-7">
+        <div class="center-block">
+            <h1 class="welcome-title text-center ">Welcome!</h1>
+            <h3 class="start-title text-center">Start keeping trace of your expenses!</h3>
+            </div>
+        </div>
+
+            <div class="col-lg-5">
+                <section id="loginForm">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                @Html.AntiForgeryToken()
-                <h4 class="login-title-form">Create a new account.</h4>
-                <hr />
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="form-group">
-                     @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                    </div>
-                </div>
+                        @Html.AntiForgeryToken()
+                        <h4 class="login-title-form">Create new account.</h4>
+                        <hr />
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-11">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-11">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-11">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            </div>
+                        </div>
 
-                <hr class="login-separator" />
-                <h3 class="get-started-title">Let's get started! </h3>
-                <h4 class="register-title">Register as new user. There are no limitations. Explore all features.</h4>
+                        <hr class="login-separator" />
+                        <h3 class="get-started-title">Let's get started! </h3>
+                        <h4 class="register-title">Register as new user. There are no limitations. Explore all features.</h4>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" class="btn btn-default" value="Register" />
-                    </div>
-                </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" class="btn btn-default col-lg-4 col-lg-push-3" value="Register" />
+                            </div>
+                        </div>
 
-           }
-        </section>
-    </div>
-    
-</div>
+                    }
+                </section>
+            </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
