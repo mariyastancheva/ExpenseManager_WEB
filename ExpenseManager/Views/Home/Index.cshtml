@@ -1,14 +1,12 @@
-﻿@{
-    ViewBag.Title = "Home";
-
-}
-@using ExpenseManager.Models;
-@using ExpenseManager.Utils;
-
+﻿@using ExpenseManager.Utils;
 @model IEnumerable<ExpenseManager.Models.Expense>
+@{
+    ViewBag.Title = "Home";
+}
+
+
 @section featured {
-  
-    <div class="row" style="padding-top:20px;">
+    <div class="table-expenses row" style="padding-top:20px; max-height:400px;overflow-y:auto;margin-bottom:25px;">
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div id="morris-area-chart"></div>
@@ -17,7 +15,7 @@
     <!-- /.panel -->
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-bar-chart-o fa-fw"></i> Charts
+            <i class="fa fa-bar-chart-o fa-fw"></i> The expenses that you have are:
         </div>
 
         @if (Model.Any())
@@ -229,8 +227,7 @@
 
                 </div>
                 <!-- /.panel-body -->
-            </div>
-        </div>
+     
     
 
 }
