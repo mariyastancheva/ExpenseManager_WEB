@@ -235,7 +235,6 @@
     <Content Include="Content\styles\categories-page.css" />
     <Content Include="Content\styles\create-category-page.css" />
     <Content Include="Content\styles\create-expense-page.css" />
-    <Content Include="Content\styles\dashboard-page.css" />
     <Content Include="Content\styles\expenses-page.css" />
     <Content Include="Content\styles\home-page.css" />
     <Content Include="Content\styles\register-page.css" />
@@ -259,9 +258,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.1.0.min.map" />
     <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -335,7 +331,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

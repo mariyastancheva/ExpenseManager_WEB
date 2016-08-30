@@ -5,7 +5,6 @@ namespace ExpenseManager
 {
     public class BundleConfig
     {
-        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -25,7 +24,22 @@ namespace ExpenseManager
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                     "~/Content/PagedList.css",
+                     "~/Content/timeline.css",
+                     "~/Content/morris.css",
+                     "~/Content/metisMenu.css",
+                     "~/Content/font-awesome.css",
+                     "~/Content/bootstrap-theme.css",
+                     "~/Content/themes/jquery-ui.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/js").Include(
+                       "~/Scripts/morris-data.js",
+                       "~/Scripts/raphael-min.js",
+                       "~/Scripts/respond.js",
+                       "~/Scripts/sb-admin-2.js",
+                       "~/js/metisMenu.js",
+                       "~/Scripts/morris.min.js"));
         }
     }
 }

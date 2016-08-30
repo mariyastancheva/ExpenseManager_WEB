@@ -6,13 +6,13 @@
 
 
 @section featured {
-    <div class="table-expenses row" style="padding-top:20px; max-height:400px;overflow-y:auto;margin-bottom:25px;">
+    <div class="table-expenses row" style="max-height:400px;overflow-y:auto;margin-bottom:50px;">
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div id="morris-area-chart"></div>
             </div>
         </div>
-        <!-- /.panel -->
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-bar-chart-o fa-fw"></i> The expenses that you have are:
@@ -20,7 +20,6 @@
 
             @if (Model.Any())
             {
-                <!-- table-expenses list -->
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
@@ -46,11 +45,8 @@
                 </div>
             }
 
-
-            <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="row">
-                    <!-- /.col-lg-4 (nested) -->
                     <div class="col-lg-6">
                         <div id="morris-bar-chart"></div>
                     </div>
@@ -60,7 +56,6 @@
         </div>
     </div>
 
-    <!-- scrips for the carts -->
     <!--expenses from the beggining-->
     @{
         var dataTotalEmpty = new[] { new { label = "Your total expenses are", value = 0 } };
@@ -113,7 +108,6 @@
         </script>
     }
 
-
     <!--expenses from this month-->
     @{
 
@@ -139,7 +133,6 @@
             var dataFromThisMonth = @(Html.Raw(listFromThisMonthEmpty));
         </script>
     }
-
 
     <!--expenses from this year-->
     @{
@@ -175,7 +168,6 @@
                     <div id="morris-donut-chart"></div>
                     <a href="http://localhost:56126/Expenses/Create" class="btn btn-success btn-block">Add New Expense</a>
                 </div>
-                <!-- /.panel-body -->
             </div>
         </div>
 
@@ -188,12 +180,8 @@
                     <div id="morris-donut-chart2"></div>
                     <a href="http://localhost:56126/Expenses/Create" class="btn btn-success btn-block">Add New Expense</a>
                 </div>
-                <!-- /.panel-body -->
             </div>
         </div>
-
-
-
 
         <div class="col-lg-3">
             <div class="panel panel-primary">
@@ -204,12 +192,8 @@
                     <div id="morris-donut-chart3"></div>
                     <a href="http://localhost:56126/Expenses/Create" class="btn btn-success btn-block">Add New Expense</a>
                 </div>
-                <!-- /.panel-body -->
             </div>
         </div>
-
-
-
 
         <div class="col-lg-3">
             <div class="panel panel-primary">
@@ -220,14 +204,9 @@
                     <div id="morris-donut-chart4"></div>
                     <a href="http://localhost:56126/Expenses/Create" class="btn btn-success btn-block">Add New Expense</a>
                 </div>
-                <!-- /.panel-body -->
             </div>
         </div>
 
-
     </div>
-    <!-- /.panel-body -->
-
-
 
 }

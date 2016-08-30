@@ -2,22 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>@ViewBag.Title</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/Site.css" rel="stylesheet">
-    <link href="~/Content/metisMenu.css" rel="stylesheet">
-    <link href="~/Content/morris.css" rel="stylesheet">
-    <link href="~/Content/timeline.css" rel="stylesheet">
-    <script src="https://use.fontawesome.com/a7eabe2741.js"></script>
-    <script src="~/Scripts/jquery-ui.min.js"></script>
-    <link href="~/Content/themes/jquery-ui.min.css" rel="stylesheet" />
-    <link href="~/Content/styles/home-page.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/js")
+    @RenderSection("scripts", required: false)
     
 </head>
 <body>
@@ -34,22 +25,5 @@
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
-
-
-    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="~/Scripts/metisMenu.min.js"></script>
-    <!-- Morris Charts JavaScript -->
-    <script src="~/Scripts/raphael-min.js"></script>
-    <script src="~/Scripts/morris.min.js"></script>
-    <script src="~/Scripts/morris-data.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="~/Scripts/sb-admin-2.js"></script>
-
-    <script src="../js/morris-data.js"></script>
 </body>
 </html>
